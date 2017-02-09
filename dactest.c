@@ -21,21 +21,26 @@ int main(int argc, char **argv){
 	bcm2835_spi_setChipSelectPolarity(BCM2835_SPI_CS1, LOW);
 	bcm2835_spi_chipSelect(BCM2835_SPI_CS1);
 
-	uint16_t len = 65000;
-	uint8_t tbuf[len];
-	uint8_t rbuf[len];
+	uint32_t len = 65000;
+	char tbuf[len];
+	char rbuf[len];
   
  	uint16_t i = 0;
 
-	for (i = 0; i < len/2; i++) {
-		tbuf[i] = 0x11111110;
+	for (i = 0; i < len/3; i++) {
+		tbuf[i] = 0x11;
 	}
-	for (i = len/2; i < len; i++) {
-		tbuf[i] = 0x00000000;
+
+	for (i = len/3; i < 2*len/3; i++){
+		tbuf[i] = 0x33;
+	}
+
+	for (i = 2*len/3; i < len; i++) {
+		tbuf[i] = 0x00;
 	}
 
 	while (1){
-		bcm2835_spi_writenb(&tbuf, &rbuf, len);
+		bcm2835_spi_writenb(&tbuf[0], len);
 		//bcm2835_delayMicroseconds(100);
 	}
 }	
