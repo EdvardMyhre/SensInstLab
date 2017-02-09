@@ -24,16 +24,18 @@ int main(int argc, char **argv){
 	uint16_t len = 65000;
 	uint8_t tbuf[len];
 	uint8_t rbuf[len];
+  
+ 	uint16_t i = 0;
 
 	for (i = 0; i < len/2; i++) {
-		tbuf[i] = 0x11111111;
+		tbuf[i] = 0x11111110;
 	}
 	for (i = len/2; i < len; i++) {
 		tbuf[i] = 0x00000000;
 	}
 
 	while (1){
-		bcm2835_spi_writenb(&buf[(j + 1) * 3 + i*(len*adc_chan + 2)], 2);
-		bcm2835_delayMicroseconds(100);
+		bcm2835_spi_writenb(&tbuf, &rbuf, len);
+		//bcm2835_delayMicroseconds(100);
 	}
-	
+}	
