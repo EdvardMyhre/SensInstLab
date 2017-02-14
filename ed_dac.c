@@ -23,10 +23,7 @@ int main(int argc, char **argv){
 
 	uint32_t len = 2;
 	char tbuf[len];
-  
- 	uint16_t i = 0;
 
-<<<<<<< HEAD
  	tbuf[0] = 0x0F
  	tbuf[1] = 0xFF
 	bcm2835_spi_writenb(&tbuf[0], len);
@@ -51,26 +48,5 @@ int main(int argc, char **argv){
  	tbuf[1] = 0x00
 	bcm2835_spi_writenb(&tbuf[0], len);
 	bcm2835_delayMilliseconds(500);
-=======
-	for (i = 0; i < len/3; i++) {
-		tbuf[i] = 0xFF;
-	}
 
-	for (i = len/3; i < 2*len/3; i++){
-		tbuf[i] = 0x55;
-	}
-
-	for (i = 2*len/3; i < len; i++) {
-		tbuf[i] = 0x00;
-	}
-
-	while (1){
-		bcm2835_spi_writenb(&tbuf[0], len-2);
-		bcm2835_delayMicroseconds(10);
-	}
-
-	bcm2835_spi_end();
-        bcm2835_close();
-        return 0;
->>>>>>> 345adc2a094c99a0402a3554b3fabed8f7958563
 }	
