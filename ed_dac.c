@@ -24,29 +24,20 @@ int main(int argc, char **argv){
 	uint32_t len = 2;
 	char tbuf[len];
 
- 	tbuf[0] = 0x0F
- 	tbuf[1] = 0xFF
-	bcm2835_spi_writenb(&tbuf[0], len);
-	bcm2835_delayMilliseconds(500);
-	tbuf[0] = 0x05
- 	tbuf[1] = 0x55
-	bcm2835_spi_writenb(&tbuf[0], len);
-	bcm2835_delayMilliseconds(500);
-	tbuf[0] = 0x00
- 	tbuf[1] = 0x00
-	bcm2835_spi_writenb(&tbuf[0], len);
-	bcm2835_delayMilliseconds(500);
- 	tbuf[0] = 0x0F
- 	tbuf[1] = 0xFF
-	bcm2835_spi_writenb(&tbuf[0], len);
-	bcm2835_delayMilliseconds(500);
-	tbuf[0] = 0x05
- 	tbuf[1] = 0x55
-	bcm2835_spi_writenb(&tbuf[0], len);
-	bcm2835_delayMilliseconds(500);
-	tbuf[0] = 0x00
- 	tbuf[1] = 0x00
-	bcm2835_spi_writenb(&tbuf[0], len);
-	bcm2835_delayMilliseconds(500);
+	while(1){
+	 	tbuf[0] = 0x0F
+	 	tbuf[1] = 0xFF
+		bcm2835_spi_writenb(&tbuf[0], len);
+		bcm2835_delayMilliseconds(500);
+		tbuf[0] = 0x05
+	 	tbuf[1] = 0x55
+		bcm2835_spi_writenb(&tbuf[0], len);
+		bcm2835_delayMilliseconds(500);
+		tbuf[0] = 0x00
+	 	tbuf[1] = 0x00
+		bcm2835_spi_writenb(&tbuf[0], len);
+		bcm2835_delayMilliseconds(500);
+	}
+
 
 }	
