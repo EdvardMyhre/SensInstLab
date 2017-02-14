@@ -16,31 +16,38 @@ int main(int argc, char **argv){
 	}
 
 	bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_MSBFIRST);
-	bcm2835_spi_setDataMode(BCM2835_SPI_MODE3);
-	bcm2835_spi_setClockDivider(8192); //Clock freq: 250MHz/divider.
+	bcm2835_spi_setDataMode(BCM2835_SPI_MODE0);
+	bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_65536); //Clock freq: 250MHz/divider.
 	bcm2835_spi_setChipSelectPolarity(BCM2835_SPI_CS1, LOW);
 	bcm2835_spi_chipSelect(BCM2835_SPI_CS1);
 
-	uint32_t len = 65000;
+	uint32_t len = 2;
 	char tbuf[len];
-	char rbuf[len];
   
  	uint16_t i = 0;
 
-	for (i = 0; i < len/3; i++) {
-		tbuf[i] = 0xFF;
-	}
-
-	for (i = len/3; i < 2*len/3; i++){
-		tbuf[i] = 0x55;
-	}
-
-	for (i = 2*len/3; i < len; i++) {
-		tbuf[i] = 0x00;
-	}
-
-	while (1){
-		bcm2835_spi_writenb(&tbuf[0], len);
-		bcm2835_delayMicroseconds(10);
-	}
+ 	tbuf[0] = 0x0F
+ 	tbuf[1] = 0xFF
+	bcm2835_spi_writenb(&tbuf[0], len);
+	bcm2835_delayMilliseconds(500);
+	tbuf[0] = 0x05
+ 	tbuf[1] = 0x55
+	bcm2835_spi_writenb(&tbuf[0], len);
+	bcm2835_delayMilliseconds(500);
+	tbuf[0] = 0x00
+ 	tbuf[1] = 0x00
+	bcm2835_spi_writenb(&tbuf[0], len);
+	bcm2835_delayMilliseconds(500);
+ 	tbuf[0] = 0x0F
+ 	tbuf[1] = 0xFF
+	bcm2835_spi_writenb(&tbuf[0], len);
+	bcm2835_delayMilliseconds(500);
+	tbuf[0] = 0x05
+ 	tbuf[1] = 0x55
+	bcm2835_spi_writenb(&tbuf[0], len);
+	bcm2835_delayMilliseconds(500);
+	tbuf[0] = 0x00
+ 	tbuf[1] = 0x00
+	bcm2835_spi_writenb(&tbuf[0], len);
+	bcm2835_delayMilliseconds(500);
 }	
