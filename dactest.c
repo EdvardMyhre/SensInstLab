@@ -28,11 +28,11 @@ int main(int argc, char **argv){
  	uint16_t i = 0;
 
 	for (i = 0; i < len/3; i++) {
-		tbuf[i] = 0x11;
+		tbuf[i] = 0xFF;
 	}
 
 	for (i = len/3; i < 2*len/3; i++){
-		tbuf[i] = 0x33;
+		tbuf[i] = 0x55;
 	}
 
 	for (i = 2*len/3; i < len; i++) {
@@ -41,6 +41,6 @@ int main(int argc, char **argv){
 
 	while (1){
 		bcm2835_spi_writenb(&tbuf[0], len);
-		//bcm2835_delayMicroseconds(100);
+		bcm2835_delayMicroseconds(10);
 	}
 }	
