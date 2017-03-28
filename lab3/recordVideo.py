@@ -30,7 +30,7 @@ savePath = ""
 # change this to what you want to name the file
 fileName = "temp.h264"
 # how long we want to record
-recordTime = 5
+recordTime = 20
 
 # If we were not running the Pi headless (without a monitor) startring the
 # preview would show us what the camera was capturing.
