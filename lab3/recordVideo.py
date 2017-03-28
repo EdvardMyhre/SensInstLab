@@ -30,7 +30,7 @@ savePath = ""
 # change this to what you want to name the file
 fileName = "temp.h264"
 # how long we want to record
-recordTime = 10
+recordTime = 20
 
 # If we were not running the Pi headless (without a monitor) startring the
 # preview would show us what the camera was capturing.
@@ -80,5 +80,5 @@ except Exception as e:
 # that can be read by a media player to play it at the correct frame rate.
 # The next is the -add command which chooses which file to add to the output.
 # Here we add the .h264 file to the output mp4 file
-subprocess.check_output(["MP4Box", "-fps", "40", "-add", savePath+fileName,savePath+"mp4/"+fileName[:-5]+".mp4"])
+subprocess.check_output(["sudo", "MP4Box", "-fps", "40", "-add", savePath+fileName,savePath+fileName[:-5]+".mp4"])
 print "Program finished successfully"
